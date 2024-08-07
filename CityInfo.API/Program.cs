@@ -76,10 +76,10 @@ builder.Services.AddAuthentication("Bearer")
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("MustBeFromAntwerp", policy =>
+    options.AddPolicy("MustBeFromAthens", policy =>
     {
         policy.RequireAuthenticatedUser();
-        policy.RequireClaim("city", "Antwerp");
+        policy.RequireClaim("city", "Athens");
     });
 });
 
