@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CityInfo.API.Controllers
 {
     [Route("api/cities/{cityId}/pointsofinterest")]
-    [Authorize(Policy = "MustBeFromAthens")]
+    //[Authorize(Policy = "MustBeFromAthens")]
     [ApiController]
     public class PointsOfInterestController : ControllerBase
     {
