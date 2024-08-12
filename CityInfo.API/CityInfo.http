@@ -1,0 +1,44 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@schema=https
+@hostname=localhost
+@port=7132
+
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities
+
+###
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities
+Accept:application/xml
+
+###
+# @name createpoi
+POST {{schema}}://{{hostname}}:{{port}}/api/v2/cities/1/pointsofinterest
+Accept:application/json
+Content-Type:application/json
+
+{
+  "name":"A simple name for testing"
+  "description":"A simple description for testing"
+}
+
+###
+@poiid = {{createpoi.response.body.id}}
+
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities/1/pointsofinterest/{{poiid}}
+Accept:application/json
+
+###
+
+// get a token
+POST {{schema}}://{{hostname}}:{{port}}/api/authentication/authenticate
+Content-Type:application/json
+
+{
+  "username":"KonstantinosSef"
+  "password":"nopassword"
+}
+
+###
+
+// authenticated GET request
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities
+Authorization: Bearer 
